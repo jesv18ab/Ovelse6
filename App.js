@@ -42,7 +42,7 @@ const AppContainer = createAppContainer(TabNavigator);
 
 
 export default class App extends React.Component {
- componentWillMount() {
+ UNSAFE_componentWillMount() {
     const firebaseConfig = {
         apiKey: "AIzaSyAfQzex-hK4ieEfDpN_0z8zqAnEAMAOOLg",
         authDomain: "ovelse6db.firebaseapp.com",

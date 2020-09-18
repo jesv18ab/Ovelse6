@@ -1,8 +1,17 @@
 
 import * as React from 'react';
-import { View, Text, FlatList, StyleSheet, Button } from 'react-native';
+import { View, Text, FlatList, StyleSheet, Button, Alert } from 'react-native';
 import firebase from 'firebase';
-import Alert from "react-native-web";
+import { YellowBox } from 'react-native';
+import _ from 'lodash';
+
+YellowBox.ignoreWarnings(['Setting a timer']);
+const _console = _.clone(console);
+console.warn = message => {
+    if (message.indexOf('Setting a timer') <= -1) {
+        _console.warn(message);
+    }
+};
 const styles = StyleSheet.create({
     container: { flex: 1, justifyContent: 'flex-start' },
     row: {
@@ -40,6 +49,14 @@ export default class CarDetails extends React.Component {
         navigation.navigate('EditCar', { id });
     };
 
+    confirmDelete = () => {
+        Alert.alert('Are you sure?', 'Do you want to delete the car?', [
+            { text: 'Cancel', style: 'cancel' },
+            // Vi bruger this.handleDelete som eventHandler til onPress
+            { text: 'Delete', style: 'destructive', onPress: this.handleDelete },
+        ]);
+    };
+
     // Vi spørger brugeren om han er sikker
 
 
@@ -71,7 +88,7 @@ export default class CarDetails extends React.Component {
         return (
             <View style={styles.container}>
                 <Button title="Edit" onPress={this.handleEdit} />
-                <Button title="Delete" onPress={this.handleDelete} />
+                <Button title="Delete" onPress={this.confirmDelete} />
                 <View style={styles.row}>
                     <Text style={styles.label}>Brand</Text>
                     <Text style={styles.value}>{car.brand}</Text>
