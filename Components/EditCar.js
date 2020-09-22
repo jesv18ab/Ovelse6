@@ -65,7 +65,7 @@ export default class EditCar extends React.Component {
                 .database()
                 .ref(`/Cars/${id}`)
                 // Vi bruger update, så kun de felter vi angiver, bliver ændret
-                .update({ /*Indsæt de forskellige variabler*/ });
+                .update({brand, model, year, licensePlate });
             // Når bilen er ændret, går vi tilbage.
             Alert.alert("Din info er nu opdateret");
             navigation.goBack();

@@ -54,13 +54,12 @@ export default class App extends React.Component {
 
     // Vi kontrollerer at der ikke allerede er en initialiseret instans af firebase
     // Så undgår vi fejlen Firebase App named '[DEFAULT]' already exists (app/duplicate-app).
-    if (firebase.apps.length ===0 ) {
+    if (firebase.apps.length === 0 ) {
     firebase.initializeApp(firebaseConfig);
 }
 
  }
   render() {
-
     return <AppContainer />;
   }
 }

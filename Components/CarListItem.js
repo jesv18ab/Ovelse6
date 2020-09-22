@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     label: { fontWeight: 'bold' },
 });
 
-export default class CarDetails extends React.Component {
+export default class CarListItem extends React.Component {
     handlePress = () => {
         // Her pakker vi ting ud fra props
         const {id, onSelect} = this.props

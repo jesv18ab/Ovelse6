@@ -34,10 +34,7 @@ export default class CarDetails extends React.Component {
 
     loadCar = id => {
         firebase
-            .database()
-            // ID fra funktionens argument sættes ind i stien vi læser fra
-            .ref(`/Cars/${id}`)
-            .on('value', snapshot => {
+            .database().ref(`/Cars/${id}`).on('value', snapshot => {
                 this.setState({ car: snapshot.val() });
             });
     };
@@ -65,13 +62,7 @@ export default class CarDetails extends React.Component {
             const { navigation } = this.props;
             const id = navigation.getParam('id');
             try {
-                firebase
-                    .database()
-                    // Vi sætter bilens ID ind i stien
-                    .ref(`/Cars/${id}`)
-                    // Og fjerner data fra den sti
-                    .remove();
-                // Og går tilbage når det er udført
+                firebase.database().ref(`/Cars/${id}`).remove();
                 navigation.goBack();
             } catch (error) {
                 Alert.alert(error.message);
