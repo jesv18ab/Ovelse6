@@ -40,25 +40,20 @@ const TabNavigator = createBottomTabNavigator({
 });
 const AppContainer = createAppContainer(TabNavigator);
 
-
-export default class App extends React.Component {
- UNSAFE_componentWillMount() {
-    const firebaseConfig = {
-        apiKey: "AIzaSyAfQzex-hK4ieEfDpN_0z8zqAnEAMAOOLg",
-        authDomain: "ovelse6db.firebaseapp.com",
-        databaseURL: "https://ovelse6db.firebaseio.com",
-        projectId: "ovelse6db",
-        storageBucket: "ovelse6db.appspot.com",
-        messagingSenderId: "104869475429",
-        appId: "1:104869475429:web:45e77b97515e809cb9c28c"        };
-
-    // Vi kontrollerer at der ikke allerede er en initialiseret instans af firebase
-    // Så undgår vi fejlen Firebase App named '[DEFAULT]' already exists (app/duplicate-app).
-    if (firebase.apps.length === 0 ) {
+const firebaseConfig = {
+    apiKey: "AIzaSyAfQzex-hK4ieEfDpN_0z8zqAnEAMAOOLg",
+    authDomain: "ovelse6db.firebaseapp.com",
+    databaseURL: "https://ovelse6db.firebaseio.com",
+    projectId: "ovelse6db",
+    storageBucket: "ovelse6db.appspot.com",
+    messagingSenderId: "104869475429",
+    appId: "1:104869475429:web:45e77b97515e809cb9c28c"        };
+if (firebase.apps.length === 0 ) {
     firebase.initializeApp(firebaseConfig);
 }
 
- }
+export default class App extends React.Component {
+
   render() {
     return <AppContainer />;
   }
